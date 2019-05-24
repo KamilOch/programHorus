@@ -8,13 +8,20 @@ i umieszczając całą logikę w klasie MyStructure.
 Z uwzględnieniem w analizie i implementacji interfejs ICompositeNode!
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyStructure implements IMyStructure {
     private List<INode> nodes;
 
-    public MyStructure(List<INode> nodes) {
-        this.nodes = nodes;
+
+
+    public void addNodeToMyStructure (INode in){
+        nodes =  new ArrayList<INode>();
+        nodes.add(in);
+    }
+
+    public MyStructure() {
     }
 
     public INode findByCode(String code) {
@@ -36,6 +43,10 @@ public class MyStructure implements IMyStructure {
     }
 
     public int count() {
-        return nodes.size();
+        int totalNumberNodes = 0;
+        //return nodes.size();
+
+        return totalNumberNodes;
     }
+
 }
