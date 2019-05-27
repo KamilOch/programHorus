@@ -14,7 +14,6 @@ import java.util.List;
 public class MyStructure implements IMyStructure {
     private List<INode> nodes;
 
-
     public void addNodeToMyStructure (INode in){
         nodes.add(in);
     }
@@ -24,25 +23,23 @@ public class MyStructure implements IMyStructure {
     }
 
     public INode findByCode(String code) {
-        for(INode node : nodes){
-               return find(node, code);
+        for (INode node : nodes){
+               return findCode(node, code);
             }
         return null;
     }
 
     public INode findByRenderer(String renderer) {
         for (INode node : nodes){
-            if (renderer.equals(node.getRenderer())){
-                return node;
+            return findRenderer(node, renderer);
             }
-        }
         return null;
     }
+
 
     @Override
     public int count() {
         int counter=0;
-
         for(INode node : nodes){
             if (!(node instanceof ICompositeNode)){
                 counter++;
@@ -52,7 +49,6 @@ public class MyStructure implements IMyStructure {
         }
         return counter;
     }
-
 
     private int totalCounter(INode inputNode) {
         int counter=1;
@@ -65,19 +61,27 @@ public class MyStructure implements IMyStructure {
         return counter;
     }
 
-    private INode find (INode inputNode, String code) {
-        INode childNode = null;
+    private INode findCode(INode inputNode, String code) {
         if (code.equals(inputNode.getCode())) {
-            childNode = inputNode;
+            return inputNode;
         } else if (inputNode instanceof ICompositeNode) {
             for (INode node : ((ICompositeNode) inputNode).getNodes()) {
-                childNode = find(node, code);
+                return findCode(node, code);
             }
         }
-        return childNode;
+        return null;
     }
 
-
+    private INode findRenderer(INode inputNode, String code) {
+        if (code.equals(inputNode.getRenderer())) {
+            return inputNode;
+        } else if (inputNode instanceof ICompositeNode) {
+            for (INode node : ((ICompositeNode) inputNode).getNodes()) {
+                return findRenderer(node, code);
+            }
+        }
+        return null;
+    }
 
 
 }
