@@ -5,12 +5,11 @@ import horus.domain.INode;
 
 import java.util.List;
 
-public class DemoNode implements ICompositeNode {
+public class DemoNode implements INode {
     private String demoCode;
     private String demoRenderer;
 
     public DemoNode(String demoCode, String demoRenderer) {
-        super();
         this.demoCode = demoCode;
         this.demoRenderer = demoRenderer;
     }
@@ -23,8 +22,5 @@ public class DemoNode implements ICompositeNode {
     public String getRenderer() {
         return demoRenderer;
     }
-    @Override
-    public List<INode> getNodes() {
-        return null;
-    }
+
 }

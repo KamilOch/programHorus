@@ -8,14 +8,14 @@ import java.util.List;
 
 public class DemoCompositeNode implements ICompositeNode {
 
-    private String demoCompositeNodeCode;
-    private String demoCompositeNodeRenderer;
-    private List<INode> nodes = new ArrayList<INode>();
+    private String demoCompositeCode;
+    private String demoCompositeRenderer;
+    private List<INode> nodes;
 
-    public DemoCompositeNode(String demoCompositeNodeCode, String demoCompositeNodeRenderer) {
-        super();
-        this.demoCompositeNodeCode = demoCompositeNodeCode;
-        this.demoCompositeNodeRenderer = demoCompositeNodeRenderer;
+    public DemoCompositeNode(String demoCompositeCode, String demoCompositeRenderer) {
+        this.demoCompositeCode = demoCompositeCode;
+        this.demoCompositeRenderer = demoCompositeRenderer;
+        nodes = new ArrayList<INode>();
     }
 
 
@@ -27,12 +27,14 @@ public class DemoCompositeNode implements ICompositeNode {
     public List<INode> getNodes() {
         return nodes;
     }
+
     @Override
     public String getCode() {
-        return demoCompositeNodeCode;
+        return demoCompositeCode;
     }
+
     @Override
     public String getRenderer() {
-        return demoCompositeNodeRenderer;
+        return demoCompositeRenderer;
     }
 }

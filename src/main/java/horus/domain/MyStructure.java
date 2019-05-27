@@ -15,13 +15,12 @@ public class MyStructure implements IMyStructure {
     private List<INode> nodes;
 
 
-
     public void addNodeToMyStructure (INode in){
-        nodes =  new ArrayList<INode>();
         nodes.add(in);
     }
 
     public MyStructure() {
+        nodes = new ArrayList<INode>();
     }
 
     public INode findByCode(String code) {
@@ -42,11 +41,30 @@ public class MyStructure implements IMyStructure {
         return null;
     }
 
+    @Override
     public int count() {
-        int totalNumberNodes = 0;
-        //return nodes.size();
+        int xxx=0;
 
-        return totalNumberNodes;
+        for(INode node : nodes){
+            if (!(node instanceof ICompositeNode)){
+                xxx++;
+            } else {
+                xxx += this.totalCounter(node);
+            }
+        }
+        return xxx;
+    }
+
+
+    public int totalCounter(INode inputNode) {
+        int counter=1;
+
+        if (inputNode instanceof ICompositeNode) {
+            for (INode node :((ICompositeNode) inputNode).getNodes()){
+                counter +=totalCounter(node);
+            }
+        }
+        return counter;
     }
 
 }
