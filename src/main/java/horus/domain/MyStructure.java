@@ -24,11 +24,9 @@ public class MyStructure implements IMyStructure {
     }
 
     public INode findByCode(String code) {
-        for (INode node : nodes){
-            if (code.equals(node.getCode())){
-                return node;
+        for(INode node : nodes){
+               return find(node, code);
             }
-        }
         return null;
     }
 
@@ -43,20 +41,20 @@ public class MyStructure implements IMyStructure {
 
     @Override
     public int count() {
-        int xxx=0;
+        int counter=0;
 
         for(INode node : nodes){
             if (!(node instanceof ICompositeNode)){
-                xxx++;
+                counter++;
             } else {
-                xxx += this.totalCounter(node);
+                counter += totalCounter(node);
             }
         }
-        return xxx;
+        return counter;
     }
 
 
-    public int totalCounter(INode inputNode) {
+    private int totalCounter(INode inputNode) {
         int counter=1;
 
         if (inputNode instanceof ICompositeNode) {
@@ -66,5 +64,20 @@ public class MyStructure implements IMyStructure {
         }
         return counter;
     }
+
+    private INode find (INode inputNode, String code) {
+        INode childNode = null;
+        if (code.equals(inputNode.getCode())) {
+            childNode = inputNode;
+        } else if (inputNode instanceof ICompositeNode) {
+            for (INode node : ((ICompositeNode) inputNode).getNodes()) {
+                childNode = find(node, code);
+            }
+        }
+        return childNode;
+    }
+
+
+
 
 }
