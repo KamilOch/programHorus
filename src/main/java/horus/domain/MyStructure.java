@@ -21,19 +21,21 @@ public class MyStructure implements IMyStructure {
     public MyStructure() {
         nodes = new ArrayList<INode>();
     }
-
+    @Override
     public INode findByCode(String code) {
+        INode myNode = null;
         for (INode node : nodes){
-               return findCode(node, code);
+            myNode= findCode(node, code);
             }
-        return null;
+        return myNode;
     }
-
+    @Override
     public INode findByRenderer(String renderer) {
+        INode myNode = null;
         for (INode node : nodes){
-            return findRenderer(node, renderer);
+            myNode = findRenderer(node, renderer);
             }
-        return null;
+        return myNode;
     }
 
 
@@ -62,26 +64,25 @@ public class MyStructure implements IMyStructure {
     }
 
     private INode findCode(INode inputNode, String code) {
+        INode myNode = null;
         if (code.equals(inputNode.getCode())) {
-            return inputNode;
+            myNode =  inputNode;
         } else if (inputNode instanceof ICompositeNode) {
             for (INode node : ((ICompositeNode) inputNode).getNodes()) {
-                return findCode(node, code);
+                myNode =  findCode(node, code);
             }
         }
-        return null;
+        return myNode;
     }
-
     private INode findRenderer(INode inputNode, String code) {
+        INode myNode = null;
         if (code.equals(inputNode.getRenderer())) {
-            return inputNode;
+            myNode =  inputNode;
         } else if (inputNode instanceof ICompositeNode) {
             for (INode node : ((ICompositeNode) inputNode).getNodes()) {
-                return findRenderer(node, code);
+                myNode = findRenderer(node, code);
             }
         }
-        return null;
+        return myNode;
     }
-
-
 }
