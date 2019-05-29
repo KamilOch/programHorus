@@ -39,5 +39,18 @@ public class FindRendererTest {
         // Then
         Assert.assertEquals(node, findByRendererTest.findByRenderer("nodeRenderer1"));
     }
-
+    @Test
+    public void shouldFindCompositeCompositeNodeInSecondLayer(){
+        // Given
+        DemoCompositeNode compositeNode = new DemoCompositeNode("nodeCC1", "nodeCR1");
+        DemoCompositeNode compositeNode2 = new DemoCompositeNode("nodeCC2", "nodeCR2");
+        DemoNode node = new DemoNode("nodeCode1", "nodeRenderer1");
+        MyStructure findByRendererTest = new MyStructure();
+        // When
+        findByRendererTest.addNodeToMyStructure(compositeNode);
+        compositeNode.addNode(compositeNode2);
+        compositeNode.addNode(node);
+        // Then
+        Assert.assertEquals(compositeNode2, findByRendererTest.findByRenderer("nodeCR2"));
+    }
 }
