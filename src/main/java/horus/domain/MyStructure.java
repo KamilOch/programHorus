@@ -26,7 +26,10 @@ public class MyStructure implements IMyStructure {
         INode myNode = null;
         for (INode node : nodes){
             myNode= findCode(node, code);
+            if(myNode != null){
+                return myNode;
             }
+        }
         return myNode;
     }
     @Override
