@@ -37,7 +37,10 @@ public class MyStructure implements IMyStructure {
         INode myNode = null;
         for (INode node : nodes){
             myNode = findRenderer(node, renderer);
+            if(myNode != null){
+                return myNode;
             }
+        }
         return myNode;
     }
 
@@ -87,6 +90,7 @@ public class MyStructure implements IMyStructure {
         } else if (inputNode instanceof ICompositeNode) {
             for (INode node : ((ICompositeNode) inputNode).getNodes()) {
                 myNode = findRenderer(node, code);
+
             }
         }
         return myNode;
