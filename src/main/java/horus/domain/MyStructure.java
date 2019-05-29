@@ -90,7 +90,9 @@ public class MyStructure implements IMyStructure {
         } else if (inputNode instanceof ICompositeNode) {
             for (INode node : ((ICompositeNode) inputNode).getNodes()) {
                 myNode = findRenderer(node, code);
-
+                if(myNode != null){
+                    return myNode;
+                }
             }
         }
         return myNode;
