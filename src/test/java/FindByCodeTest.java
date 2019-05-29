@@ -64,21 +64,7 @@ public class FindByCodeTest {
         Assert.assertEquals(node, findByCodeTest.findByCode("nodeCode1"));
     }
 
-    //UWAGA TO NIE!!!! DZIALA
-    @Test
-    public void shouldFindCompositeCompositeNodeInSecondLayer(){
-        // Given
-        DemoCompositeNode compositeNode = new DemoCompositeNode("nodeCC1", "nodeCR1");
-        DemoCompositeNode compositeNode2 = new DemoCompositeNode("nodeCC2", "nodeCR2");
-        DemoNode node = new DemoNode("nodeCode1", "nodeRenderer1");
-        MyStructure findByCodeTest = new MyStructure();
-        // When
-        findByCodeTest.addNodeToMyStructure(compositeNode);
-        compositeNode.addNode(compositeNode2);
-        compositeNode.addNode(node);
-        // Then
-        Assert.assertEquals(compositeNode2, findByCodeTest.findByCode("nodeCC2"));
-    }
+
 
     //Test NOWY!!!
     @Test
@@ -93,7 +79,21 @@ public class FindByCodeTest {
         // Then
         Assert.assertEquals(node, findByCodeTest.findByCode("nodeCode1"));
     }
-
+    //Test NOWY 2!!!
+    @Test
+    public void shouldFindCompositeCompositeNodeInSecondLayer(){
+        // Given
+        DemoCompositeNode compositeNode = new DemoCompositeNode("nodeCC1", "nodeCR1");
+        DemoCompositeNode compositeNode2 = new DemoCompositeNode("nodeCC2", "nodeCR2");
+        DemoNode node = new DemoNode("nodeCode1", "nodeRenderer1");
+        MyStructure findByCodeTest = new MyStructure();
+        // When
+        findByCodeTest.addNodeToMyStructure(compositeNode);
+        compositeNode.addNode(compositeNode2);
+        compositeNode.addNode(node);
+        // Then
+        Assert.assertEquals(compositeNode2, findByCodeTest.findByCode("nodeCC2"));
+    }
 
 
 
