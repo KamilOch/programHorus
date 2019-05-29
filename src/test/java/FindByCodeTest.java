@@ -80,6 +80,20 @@ public class FindByCodeTest {
         Assert.assertEquals(compositeNode2, findByCodeTest.findByCode("nodeCC2"));
     }
 
+    //Test NOWY!!!
+    @Test
+    public void shouldFindNodeInTwoElementsList(){
+        // Given
+        DemoNode node = new DemoNode("nodeCode1", "nodeRenderer1");
+        DemoNode node1 = new DemoNode("nodeCode2", "nodeRenderer2");
+        MyStructure findByCodeTest = new MyStructure();
+        // When
+        findByCodeTest.addNodeToMyStructure(node);
+        findByCodeTest.addNodeToMyStructure(node1);
+        // Then
+        Assert.assertEquals(node, findByCodeTest.findByCode("nodeCode1"));
+    }
+
 
 
 
